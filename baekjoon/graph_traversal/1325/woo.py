@@ -1,10 +1,9 @@
-#시간초과
+from collections import deque
 
-from collections import defaultdict, deque
-
-def bfs(graph, visited, v):
+def bfs(graph, v):
     answer = 1
     queue = deque([v])
+    visited = [False] * (len(graph))
     visited[v] = True
     while queue:
         temp = queue.popleft()
@@ -17,15 +16,13 @@ def bfs(graph, visited, v):
 
 def solution():
     n, m = map(int, input().split())
-    graph = defaultdict(list)
+    graph = [[] for _ in range(n+1)]
     answer = [0] * (n+1)
     for _ in range(m):
         temp1, temp2 = map(int, input().split())
         graph[temp2].append(temp1)
-    print(graph)
     for i in range(1, n+1):
-        visited = defaultdict(bool)
-        answer[i] = bfs(graph, visited, i)
+        answer[i] = bfs(graph, i)
     for i in range(1, n+1):
         if answer[i] == max(answer):
             print(i, end=' ')
