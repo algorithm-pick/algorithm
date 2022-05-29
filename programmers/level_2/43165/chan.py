@@ -1,7 +1,10 @@
-def dfs(graph, start, value):
+result = 0
+
+
+def dfs(graph, start, value, target):
     # 절댓값이면 리턴
     if abs(start) == len(graph):
-        if value == 3:
+        if value == target:
             global result
             result += 1
         return
@@ -10,13 +13,11 @@ def dfs(graph, start, value):
     value_2 = value - graph[start]
 
     # # 정수한번 음수한번
-    dfs(graph, start + 1, value_1)
-    dfs(graph, start + 1, value_2)
+    dfs(graph, start + 1, value_1, target)
+    dfs(graph, start + 1, value_2, target)
 
 
-result = 0
-# graph = [4, 1, 2, 1]
-graph = [1, 1, 1, 1, 1]
-dfs(graph, 0, 0)
-
-print(result)
+def solution(numbers, target):
+    dfs(numbers, 0, 0, target)
+    global result
+    return result
