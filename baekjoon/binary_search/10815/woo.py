@@ -1,6 +1,6 @@
 def solution():
     n = int(input())
-    have = list(map(int, input().split()))
+    have = set(map(int, input().split()))
     m = int(input())
     find = list(map(int, input().split()))
     for i in find:
