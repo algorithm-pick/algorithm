@@ -6,6 +6,7 @@ def solution(s):
     
     for i in s:
         data=i.split(",")   #각각 배열에 
+        print(data)
         for x in data:
             if int(x) not in answer:
                 answer.append(int(x))

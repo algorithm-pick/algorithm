@@ -6,6 +6,7 @@ def solution(s):
         arr[i] = arr[i].replace('}', '')
         arr[i] = arr[i].split(',')
     arr.sort(key=len)
+    print(arr)
     answer = [int(arr[0][0])]
     for i in range(1, len(arr)):
         temp = list(set(arr[i]) - set(arr[i - 1]))
