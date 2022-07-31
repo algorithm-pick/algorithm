@@ -1,6 +1,7 @@
 import heapq
 import sys
 
+
 def dijkstra(graph, distance, start):
     q = []
     heapq.heappush(q, (0, start))
@@ -15,15 +16,16 @@ def dijkstra(graph, distance, start):
                 distance[i[0]] = cost
                 heapq.heappush(q, (cost, i[0]))
 
+
 def solution():
     input = sys.stdin.readline
     INF = int(1e9)
     n, d = map(int, input().split())
-    graph = [[] for _ in range(d+1)]
-    distance = [INF] * (d+1)
+    graph = [[] for _ in range(d + 1)]
+    distance = [INF] * (d + 1)
     distance[0] = 0
     for i in range(d):
-        graph[i].append((i+1, 1))
+        graph[i].append((i + 1, 1))
     for _ in range(n):
         x, y, z = map(int, input().split())
         if y > d:
@@ -31,5 +33,6 @@ def solution():
         graph[x].append((y, z))
     dijkstra(graph, distance, 0)
     print(distance[d])
+
 
 solution()
