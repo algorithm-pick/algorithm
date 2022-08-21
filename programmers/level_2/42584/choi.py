@@ -1,14 +1,18 @@
+from collections import deque
+
+
 def solution(prices):
     answer = []
+    price = deque(prices)
 
-    for i, price in enumerate(prices):
+    while price:
         cnt = 0
+        target = price.popleft()
 
-        if i < len(prices)-1:
-            for others in prices[i+1:]:
-                cnt += 1
-                if others < price:
-                    break
+        for i in price:
+            cnt += 1
+            if i < target:
+                break
         answer.append(cnt)
 
     return answer
@@ -16,17 +20,14 @@ def solution(prices):
 # def solution(prices):
 #    answer = []
 #
-#    second = len(prices)
 #    for i, price in enumerate(prices):
-#        flag = 0
+#        cnt = 0
 #
 #        if i < len(prices)-1:
-#            for j, others in enumerate(prices[i+1:]):
+#            for others in prices[i+1:]:
+#                cnt += 1
 #                if others < price:
-#                    answer.append(j+1)
-#                    flag = 1
 #                    break
-#        if not flag:
-#            answer.append(second-i-1)
+#        answer.append(cnt)
 #
 #    return answer

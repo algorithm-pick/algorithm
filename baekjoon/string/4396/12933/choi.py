@@ -24,7 +24,7 @@ for i in duck:
         quack[-1] += 1
 
 final = sum(quack)
-if (final - quack[-1]) or (not final):
+if (final - quack[-1]) or (not final) or (len(duck) % 5):
     print(-1)
 else:
     print(quack[-1])
